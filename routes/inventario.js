@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getInventarios, getInventarioByID, createInventario, updateInventario, uploadImage, getFoto} = require('../controllers/inventarioController');
+const { getInventarios, getInventarioByID, createInventario, updateInventario, uploadImage, getFoto,deleteInventario} = require('../controllers/inventarioController');
 
 const router = Router();
 
@@ -32,5 +32,8 @@ router.post('/:id/upload-image', uploadImage);
  * get foto de inventario
  */
 router.get('/:id/image', getFoto);
+
+//eliminar un inventario
+router.delete('/:id', deleteInventario);
 
 module.exports = router;

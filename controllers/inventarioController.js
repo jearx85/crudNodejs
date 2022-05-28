@@ -181,4 +181,23 @@ const getFoto = async (req = request, res = response) => {
     }
 }
 
-module.exports = { getInventarios, getInventarioByID, createInventario, updateInventario, uploadImage, getFoto};
+const deleteInventario = async (req, res) => {
+    try{
+        const { id } = req.params;
+        const inventario = await Inventario.findByIdAndDelete(id);
+        if(!inventario){
+            return res.status(400).json({
+                msj: 'No existe este inventario'
+            });
+        }
+        res.status(200).json({
+            msj: 'Se elimino el inventario'
+        });
+    }catch(e){
+        return res.status(500).json({
+            error: e
+        });
+    }
+}
+
+module.exports = { getInventarios, getInventarioByID, createInventario, updateInventario, uploadImage, getFoto, deleteInventario};
