@@ -15,6 +15,7 @@ app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/'
 }));
+app.use(cors());
 
 
 app.use('/api/estados',estados);
