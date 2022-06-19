@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const fileUpload = require('express-fileupload');
-
+const cors = require('cors');
 const estados = require('./routes/estado');
 const marcas = require('./routes/marca');
 const tiposEquipo = require('./routes/tipoEquipo');
@@ -23,9 +23,5 @@ app.use('/api/marcas',marcas);
 app.use('/api/tiposEquipo',tiposEquipo);
 app.use('/api/usuarios',usuarios);
 app.use('/api/inventarios',inventarios);
-
-
-
-
 
 module.exports = app;
