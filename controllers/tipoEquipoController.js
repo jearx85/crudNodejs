@@ -24,7 +24,10 @@ const getTiposEquipoById = async (req = request, res = response) => {
         const id  = req.params.id;
         console.log(id)
         const query = { _id: id };
-        const tipoEquipo = await TipoEquipo.findOne(query);
+        const tipoEquipo = await TipoEquipo.findOne(query).populate({
+            path: 'usuario',
+            match: { estado: true }
+        });
         res.json(tipoEquipo);
     }catch(e){
         return res.status(500).json({msg: e});
